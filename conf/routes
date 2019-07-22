@@ -1,2 +1,5 @@
 GET 	/ 								controllers.IndexController.index()
 
+
+POST    /logs/filters                   controllers.IndexController.getWithFilters()
+POST    /logs                           controllers.IndexController.saveLog()
