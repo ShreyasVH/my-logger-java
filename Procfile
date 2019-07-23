@@ -1,0 +1,1 @@
+web: target/universal/stage/bin/my-logger-java -Dhttp.port=${PORT} -jvm-debug "8002"
