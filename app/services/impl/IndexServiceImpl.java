@@ -85,7 +85,7 @@ public class IndexServiceImpl implements IndexService
         log.setType(request.getType());
         log.setContent(request.getContent() + ". Date : " + Utils.getCurrentDate());
         log.setSource(request.getSource());
-        log.setCreatedAt(Utils.getCurrentDate());
+//        log.setCreatedAt(Utils.getCurrentDate());
 
         return indexDao.saveLog(log);
     }
