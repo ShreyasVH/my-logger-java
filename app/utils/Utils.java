@@ -23,9 +23,8 @@ public class Utils
 
     public static Date getCurrentDate()
     {
-        Calendar c = Calendar.getInstance();
+        Calendar c = Calendar.getInstance(TimeZone.getTimeZone("Asia/Kolkata"));
         c.setTime(new Date());
-        c.setTimeZone(TimeZone.getTimeZone("GMT+05:30"));
 
         return c.getTime();
     }
