@@ -29,7 +29,7 @@ public class IndexDao
         return "INDEX FROM DAO";
     }
 
-    public List<Log> getWithFilters(List<String> types, List<String> sources, Date from, Date to, Integer offset, Integer limit)
+    public List<Log> getWithFilters(List<String> types, List<String> sources, String from, String to, Integer offset, Integer limit)
     {
         if(null == db)
         {

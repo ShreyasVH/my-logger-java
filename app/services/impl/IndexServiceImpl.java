@@ -34,46 +34,49 @@ public class IndexServiceImpl implements IndexService
     {
         List<String> types = new ArrayList<>();
         List<String> sources = new ArrayList<>();
-        Date from = null;
-        Date to = null;
+        String from = null;
+        String to = null;
 
-        Map<String, List<Object>> filters = request.getFilters();
-        Map<String, Map<String, Object>> rangeFilters = request.getRangeFilters();
+        Map<String, List<String>> filters = request.getFilters();
+        Map<String, Map<String, String>> rangeFilters = request.getRangeFilters();
 
-        for(Map.Entry<String, List<Object>> entry: filters.entrySet())
+        for(String key: filters.keySet())
         {
-            String key = entry.getKey();
-            List<Object> valueList = entry.getValue();
+            List<String> valueList = filters.get(key);
 
             switch(key)
             {
                 case "types":
-                    types.addAll(Utils.convertObjectList(valueList, String.class));
+                    types.addAll(valueList);
                     break;
                 case "sources":
-                    sources.addAll(Utils.convertObjectList(valueList, String.class));
+                    sources.addAll(valueList);
                     break;
             }
         }
 
-//        for(Map.Entry<String, Map<String, Object>> entry: rangeFilters.entrySet())
-//        {
-//            String key = entry.getKey();
-//            Map<String, Object> valueMap = entry.getValue();
-//
-//            switch(key)
-//            {
-//                case "createdDate":
-//                    if(!valueMap.isEmpty())
-//                    {
-//                        if(valueMap.containsKey("from"))
-//                        {
-//                            from = DateFormat.parse((String) valueMap.get("from"));
-//                        }
-//                    }
-//                    break;
-//            }
-//        }
+        for(String key: rangeFilters.keySet())
+        {
+            Map<String, String> valueMap = rangeFilters.get(key);
+
+            switch(key)
+            {
+                case "createdAt":
+                    if(!valueMap.isEmpty())
+                    {
+                        if(valueMap.containsKey("from"))
+                        {
+                            from = valueMap.get("from");
+                        }
+
+                        if(valueMap.containsKey("to"))
+                        {
+                            to = valueMap.get("to");
+                        }
+                    }
+                    break;
+            }
+        }
 
         return indexDao.getWithFilters(types, sources, from, to, request.getOffset(), request.getCount());
     }

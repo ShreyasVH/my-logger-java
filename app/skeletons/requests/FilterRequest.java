@@ -11,8 +11,8 @@ import java.util.Map;
 @Setter
 public class FilterRequest extends BaseRequest
 {
-    private Map<String, List<Object>> filters = new HashMap<>();
-    private Map<String, Map<String, Object>> rangeFilters = new HashMap<>();
+    private Map<String, List<String>> filters = new HashMap<>();
+    private Map<String, Map<String, String>> rangeFilters = new HashMap<>();
     private int offset = 0;
     private int count = 100;
 }
