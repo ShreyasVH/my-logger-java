@@ -1,5 +1,6 @@
 package skeletons.requests;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -9,6 +10,7 @@ import java.util.Map;
 
 @Getter
 @Setter
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class FilterRequest extends BaseRequest
 {
     private Map<String, List<String>> filters = new HashMap<>();
