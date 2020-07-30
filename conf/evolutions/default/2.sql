@@ -1,0 +1,6 @@
+CREATE TABLE `cron_logs` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `type` int(10) unsigned NOT NULL,
+  `action_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8
