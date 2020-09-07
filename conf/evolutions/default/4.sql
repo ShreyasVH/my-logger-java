@@ -1,1 +1,1 @@
-INSERT INTO `cron_logs` (`type`) VALUES (2);
+INSERT INTO `cron_logs` (`type`) VALUES (3);
